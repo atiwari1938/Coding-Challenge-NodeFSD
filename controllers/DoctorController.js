@@ -4,8 +4,9 @@ exports.getAllDoctors = async (req, res) => {
   try {
     const doctors = await Doctor.findAll();
     res.json(doctors);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+  } catch (error) {
+    console.error("Error fetching doctors:",error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
@@ -16,8 +17,9 @@ exports.getDoctorById = async (req, res) => {
       return res.status(404).json({ message: 'Doctor not found' });
     }
     res.json(doctor);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+  } catch (error) {
+    console.error('Error fetching doctor by id:',error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
@@ -27,8 +29,9 @@ exports.createDoctor = async (req, res) => {
   try {
     await doctor.save();
     res.status(201).json({ message: 'Doctor created successfully' });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+  } catch (error) {
+    console.error('Error creating doctor:',error);
+    res.status(400).json({ error: '400 Bad Request' });
   }
 };
 
@@ -65,7 +68,8 @@ exports.deleteDoctor = async (req, res) => {
       }
       await doctor.destroy();
       res.json({ message: 'Doctor deleted successfully' });
-    } catch (err) {
-      res.status(500).json({ message: err.message });
+    } catch (error) {
+        console.error('Error Deleting Doctor:',error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
   };
