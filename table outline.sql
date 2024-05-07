@@ -2,7 +2,7 @@ CREATE DATABASE doctorsDB;
 
 USE doctorsDB;
 
-CREATE TABLE doctors (
+CREATE TABLE IF NOT EXISTS doctors (
     doctorId INT AUTO_INCREMENT PRIMARY KEY,
     doctorName VARCHAR(255) NOT NULL,
     contactNumber VARCHAR(20) NOT NULL,
