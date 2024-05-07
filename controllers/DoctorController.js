@@ -19,8 +19,8 @@ exports.getDoctorById = async (req, res) => {
     
     const doctor = await Doctor.findByPk(req.params.doctorId);
     if (!doctor) {
-        logger.info("No Doctors found");
-      return res.status(404).json({ message: 'Doctor not found' });
+        logger.info("No Doctors found : 404");
+      return res.status(404).json({ message: 'Doctor not found :404' });
     }
     logger.info("Get doctor by id:",doctor);
     res.json(doctor);
@@ -37,7 +37,7 @@ exports.createDoctor = async (req, res) => {
   try {
     await doctor.save();
     logger.info("Doctor created successfully",doctor);
-    res.status(201).json({ message: 'Doctor created successfully',doctor });
+    res.status(201).json({ message: 'Doctor created successfully :201',doctor });
   } catch (error) {
     console.error('Error creating doctor:',error);
     logger.error("Error creating doctor:",error);
@@ -52,7 +52,7 @@ exports.updateDoctor = async (req, res) => {
   
       const doctor = await Doctor.findByPk(doctorId);
       if (!doctor) {
-        return res.status(404).json({ error: 'Doctor not found' });
+        return res.status(404).json({ error: 'Doctor not found:404' });
       }
   
       doctor.doctorName = doctorName;
@@ -64,7 +64,7 @@ exports.updateDoctor = async (req, res) => {
       await doctor.save();
       logger.info("Doctor updated succesfully",doctor);
       console.log("Doctor Updated successfully");
-      res.status(200).json({ message: "Doctor Updated successfully", doctor });
+      res.status(200).json({ message: "Doctor Updated successfully:200", doctor });
     } catch (error) {
         logger.error("Error in updating doctor:",error);
       console.error('Error in updating doctor:', error);
@@ -77,7 +77,7 @@ exports.deleteDoctor = async (req, res) => {
     try {
       const doctor = await Doctor.findByPk(doctorId);
       if (!doctor) {
-        return res.status(404).json({ message: 'Doctor not found' });
+        return res.status(404).json({ message: 'Doctor not found:404' });
       }
       await doctor.destroy();
       logger.info("Doctor Deleted ",doctor);

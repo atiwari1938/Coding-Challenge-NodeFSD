@@ -2,7 +2,10 @@
 const { check, validationResult } = require('express-validator');
 
 exports.validateDoctor = [
-  check('email')
+   check('doctorName')
+   .isLength({min:4})
+   .withMessage('Doctor name must be at least 4 characters long'),
+    check('email')
   .isEmail()
   .withMessage('Invalid email'),
   check('contactNumber')
