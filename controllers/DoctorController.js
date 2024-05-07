@@ -28,7 +28,7 @@ exports.createDoctor = async (req, res) => {
   const doctor = new Doctor(doctorData);
   try {
     await doctor.save();
-    res.status(201).json({ message: 'Doctor created successfully' });
+    res.status(201).json({ message: 'Doctor created successfully',doctor });
   } catch (error) {
     console.error('Error creating doctor:',error);
     res.status(400).json({ error: '400 Bad Request' });
@@ -52,7 +52,8 @@ exports.updateDoctor = async (req, res) => {
       doctor.degree = degree;
   
       await doctor.save();
-      res.status(200).json({ success: true, doctor });
+      console.log("Doctor Updated successfully");
+      res.status(200).json({ message: "Doctor Updated successfully", doctor });
     } catch (error) {
       console.error('Error in updating doctor:', error);
       res.status(500).json({ error: 'Internal Server Error' });
@@ -67,7 +68,7 @@ exports.deleteDoctor = async (req, res) => {
         return res.status(404).json({ message: 'Doctor not found' });
       }
       await doctor.destroy();
-      res.json({ message: 'Doctor deleted successfully' });
+      res.json({ message: 'Doctor deleted successfully',doctor });
     } catch (error) {
         console.error('Error Deleting Doctor:',error);
       res.status(500).json({ error: 'Internal Server Error' });
