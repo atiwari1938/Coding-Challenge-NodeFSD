@@ -1,0 +1,27 @@
+{
+  "name": "doctor",
+  "version": "1.0.0",
+  "description": "coding challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atiwari1938/Coding-Challenge-NodeFSD.git"
+  },
+  "author": "Ankit Tiwari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atiwari1938/Coding-Challenge-NodeFSD/issues"
+  },
+  "homepage": "https://github.com/atiwari1938/Coding-Challenge-NodeFSD#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.0.1",
+    "mysql2": "^3.9.7",
+    "sequelize": "^6.37.3"
+  }
+}
